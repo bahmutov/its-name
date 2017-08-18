@@ -23,6 +23,32 @@ the list of names starting from the top level `describe` down to the test's
 own name. From inside test just pass `this` instance.
 
 ```js
+const itsName = require('its-name')
+describe('its-name', () => {
+  describe('nested describe', () => {
+    context('inner context', () => {
+      it('finds all names', function () {
+        const names = itsName(this)
+        // ["its-name", "nested-describe", "inner context", "finds all names"]
+      })
+    })
+  })
+})
+```
+
+**Note:** if the test instance is an arrow function - its context will NOT
+be the test object, instead it will be the parent closure.
+
+```js
+const itsName = require('its-name')
+it('works', function () {
+  itsName(this)
+  // ["works"]
+})
+it('does not work', () => {
+  itsName(this)
+  // throws an error
+})
 ```
 
 ### Small print
