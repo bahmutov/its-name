@@ -18,6 +18,13 @@ npm install --save its-name
 
 ## Use
 
+If you have a test instance, for example when running Mocha you can find
+the list of names starting from the top level `describe` down to the test's
+own name. From inside test just pass `this` instance.
+
+```js
+```
+
 ### Small print
 
 Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2017
